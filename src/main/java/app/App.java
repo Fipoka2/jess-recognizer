@@ -14,9 +14,15 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 
-    private static final String MAIN_VIEW_PATH = "view\\main.fxml";
+    private static final String MAIN_VIEW_PATH;
     private static final int BASE_WIDTH = 800;
     private static final int BASE_HEIGHT = 400;
+    private static final String OS;
+
+    static {
+        OS = System.getProperty("os.name");
+        MAIN_VIEW_PATH = convertPath("view\\main.fxml");
+    }
 
     private Stage primaryStage;
     private BorderPane rootLayout;
@@ -39,7 +45,7 @@ public class App extends Application {
 
     public void showPersons() throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(App.class.getClassLoader().getResource("view\\PersonList.fxml"));
+        loader.setLocation(App.class.getClassLoader().getResource(convertPath("view\\PersonList.fxml")));
         AnchorPane personOverview = loader.load();
         rootLayout.setCenter(personOverview);
     }
@@ -48,4 +54,12 @@ public class App extends Application {
         launch();
     }
 
+    private static String convertPath(String path) {
+        if (OS.equals("Linux"))
+        {
+             return path.replace('\\', '/');
+        } else {
+            return path.replace('/', '\\');
+        }
+    }
 }

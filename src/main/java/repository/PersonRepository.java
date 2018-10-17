@@ -8,9 +8,18 @@ public class PersonRepository {
 
     private ArrayList<Person> persons;
 
-     public PersonRepository() {
-         this.persons = new ArrayList<>();
-     }
+    private static PersonRepository instance;
+
+    private PersonRepository() {
+        persons = new ArrayList<>();
+    }
+
+    public static PersonRepository getInstance() {
+        if (instance == null) {
+            instance = new PersonRepository();
+        }
+        return instance;
+    }
 
     public ArrayList<Person> getPersons() {
         return persons;
