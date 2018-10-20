@@ -43,7 +43,7 @@ public class App extends Application {
         });
     }
 
-    public void showPersons() throws IOException {
+    private void showPersons() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(App.class.getClassLoader().getResource(convertPath("view\\PersonList.fxml")));
         AnchorPane personOverview = loader.load();
