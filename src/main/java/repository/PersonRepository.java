@@ -1,17 +1,17 @@
 package repository;
 
-import java.util.ArrayList;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.Person;
 
 public class PersonRepository {
 
-    private ArrayList<Person> persons;
+    private ObservableList<Person> persons;
 
     private static PersonRepository instance;
 
     private PersonRepository() {
-        persons = new ArrayList<>();
+        persons = FXCollections.observableArrayList();
     }
 
     public static PersonRepository getInstance() {
@@ -21,11 +21,7 @@ public class PersonRepository {
         return instance;
     }
 
-    public ArrayList<Person> getPersons() {
+    public ObservableList<Person> getPersons() {
         return persons;
-    }
-
-    public void setPersons(ArrayList<Person> persons) {
-        this.persons = persons;
     }
 }

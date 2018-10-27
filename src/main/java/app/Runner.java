@@ -8,6 +8,6 @@ public class Runner {
 
     public static void main(String[] args) {
         PersonRepository rep = PersonRepository.getInstance(); //init repo
-        App.main(args);
+        Root.main(args);
     }
 }

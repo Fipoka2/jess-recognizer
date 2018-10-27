@@ -3,7 +3,7 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.collections.FXCollections;
+import app.Child;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,7 +12,7 @@ import javafx.scene.control.ListView;
 import model.Person;
 import repository.PersonRepository;
 
-public class PersonListController implements Initializable {
+public class PersonListController extends Child implements Initializable {
 
     @FXML
     private ListView<Person> personListView;
@@ -29,25 +29,41 @@ public class PersonListController implements Initializable {
     @FXML
     private Label nationality;
 
-    private ObservableList<Person> list;
+    @FXML
+    private void handleNewPerson() {
+        Person tempPerson = new Person();
+        boolean okClicked = this.root.showPersonEditDialog(tempPerson);
+        if (okClicked) {
+            PersonRepository.getInstance().getPersons().add(tempPerson);
+        }
+    }
 
-    public void handleNewPerson() {}
+    @FXML
+    public void handleEditPerson() {
+        int selectedIndex = personListView.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            this.root.showPersonEditDialog(personListView.getItems().get(selectedIndex));
+        }
+    }
 
-    public void handleEditPerson() {}
-
-    public void handleDeletePerson() {}
+    @FXML
+    public void handleDeletePerson() {
+        int selectedIndex = personListView.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            personListView.getItems().remove(selectedIndex);
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<Person> persons = PersonRepository.getInstance().getPersons();
 
-        var tempList = PersonRepository.getInstance().getPersons();
         for (int i = 0; i< 10; i++) {
             Person p = new Person();
             p.setName("test");
-            tempList.add(p);
+            persons.add(p);
         }
-        list = FXCollections.observableArrayList(tempList);
-        personListView.setItems(list);
+        personListView.setItems(persons);
 
         personListView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showPersonDetails(newValue));
