@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import model.Person;
-import repository.RepositoryManager;
+import repository.PersonRepository;
 
 public class PersonListController implements Initializable {
 
@@ -40,7 +40,7 @@ public class PersonListController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        var tempList = RepositoryManager.getInstance().getRepository().getPersons();
+        var tempList = PersonRepository.getInstance().getPersons();
         for (int i = 0; i< 10; i++) {
             Person p = new Person();
             p.setName("test");
