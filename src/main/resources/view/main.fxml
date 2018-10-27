@@ -8,14 +8,11 @@
 <BorderPane prefHeight="400.0" prefWidth="600.0">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
-            <Menu mnemonicParsing="false" text="File">
-                <MenuItem mnemonicParsing="false" text="Close"/>
+            <Menu mnemonicParsing="false" text="Файл">
+                <MenuItem mnemonicParsing="false" text="Загрузить из файла"/>
             </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-                <MenuItem mnemonicParsing="false" text="Delete"/>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-                <MenuItem mnemonicParsing="false" text="About"/>
+            <Menu mnemonicParsing="false" text="Помощь">
+                <MenuItem mnemonicParsing="false" text="О программе"/>
             </Menu>
         </MenuBar>
     </top>

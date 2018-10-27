@@ -20,7 +20,7 @@ public class Root extends Application {
 
     private static final String MAIN_VIEW_PATH;
     // при
-    private static final int BASE_WIDTH = 700;
+    private static final int BASE_WIDTH = 800;
     private static final int BASE_HEIGHT = 400;
     private static final String OS;
 
