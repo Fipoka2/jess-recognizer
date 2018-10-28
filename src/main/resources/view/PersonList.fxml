@@ -17,8 +17,7 @@
         <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="800.0">
                 <children>
-                  <ListView fx:id="personListView" layoutY="-2.0" prefHeight="400.0" prefWidth="240.0"
-                            style="-fx-font-size: 14.0" />
+                  <ListView fx:id="personListView" layoutY="-2.0" prefHeight="400.0" prefWidth="240.0" style="-fx-font-size: 14.0" />
                 </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="389.0">
@@ -27,7 +26,8 @@
                      <font>
                         <Font size="16.0" />
                      </font></Label>
-                    <GridPane layoutX="38.0" layoutY="46.0" prefHeight="173.0" prefWidth="374.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="46.0">
+                    <GridPane layoutX="38.0" layoutY="46.0" prefHeight="173.0" prefWidth="394.0"
+                              AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="124.0" AnchorPane.topAnchor="46.0">
                         <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.0" minWidth="10.0" prefWidth="157.0" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="248.0" minWidth="10.0" prefWidth="217.0" />
@@ -81,6 +81,8 @@
                             <Button mnemonicParsing="false" onAction="#handleDeletePerson" text="Delete" />
                         </buttons>
                     </ButtonBar>
+                  <Button fx:id="processButton" layoutX="460.0" layoutY="122.0" mnemonicParsing="false" onAction="#process"
+                          style="-fx-background-radius: 4em; -fx-min-height: 4em; -fx-max-height: 4em; -fx-min-width: 4em; -fx-max-width: 4em;" />
                 </children>
             </AnchorPane>
         </items>

@@ -1,19 +1,20 @@
 package model;
 
-import java.util.List;
-
 public class JessResult {
-    private List<Person> persons;
+    private int personId;
     private String message;
 
-    public List<Person> getPersons()
-    {
-        return persons;
+    public JessResult(int personId, String message) {
+        this.personId = personId;
+        this.message = message;
     }
 
-    public void setPersons(List<Person> persons)
-    {
-        this.persons = persons;
+    public int getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 
     public String getMessage()

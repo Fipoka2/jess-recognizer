@@ -4,11 +4,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import app.Child;
+import core.jess.JessEngine;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import jess.JessException;
 import model.Person;
 import repository.PersonRepository;
 
@@ -28,6 +31,9 @@ public class PersonListController extends Child implements Initializable {
 
     @FXML
     private Label nationality;
+
+    @FXML
+    private Button processButton;
 
     @FXML
     private void handleNewPerson() {
@@ -81,5 +87,11 @@ public class PersonListController extends Child implements Initializable {
             hairColorLabel.setText("");
             nationality.setText("");
         }
+    }
+
+    @FXML
+    private void process() throws JessException {
+        JessEngine engine = new JessEngine();
+        engine.checkPersons();
     }
 }
