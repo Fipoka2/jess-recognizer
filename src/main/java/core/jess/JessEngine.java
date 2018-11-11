@@ -2,6 +2,7 @@ package core.jess;
 
 import java.util.Iterator;
 
+import app.Root;
 import jess.Filter;
 import jess.JessException;
 import jess.Rete;
@@ -15,7 +16,7 @@ public class JessEngine {
 
     public JessEngine() throws JessException {
         engine.reset();
-        engine.batch("rules/rules.clp");
+        engine.batch(Root.convertPath("rules/rules.clp"));
     }
 
     public JessResult checkPersons() throws JessException {

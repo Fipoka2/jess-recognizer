@@ -62,7 +62,7 @@ public class Root extends Application {
         launch();
     }
 
-    private static String convertPath(String path) {
+    public static String convertPath(String path) {
         if (OS.equals("Linux"))
         {
              return path.replace('\\', '/');

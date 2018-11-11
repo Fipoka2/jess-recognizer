@@ -11,19 +11,19 @@
 (defrule check_persons1
     ?person1 <- (Person {name == "Павел"})
     =>
-    (add (new JessResult ?person1.id "message"))
+    (add (new JessResult ?person1.id "Правило 1"))
 )
 
 (defrule check_persons2
     ?person1 <- (Person {name == "Иван"})
     =>
-    (add (new JessResult ?person1.id "message"))
+    (add (new JessResult ?person1.id "Правило 2"))
 )
 
 (defrule check_persons3
     ?person1 <- (Person {name == "test1"})
     ?person2 <- (Person {name == "test2"})
     =>
-    (add (new JessResult ?person1.id "message1"))
-    (add (new JessResult ?person2.id "message1"))
+    (add (new JessResult ?person1.id "правило 3"))
+    (add (new JessResult ?person2.id "правило 3"))
 )
