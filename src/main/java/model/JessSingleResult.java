@@ -1,10 +1,10 @@
 package model;
 
-public class JessResult {
+public class JessSingleResult {
     private int personId;
     private String message;
 
-    public JessResult(int personId, String message) {
+    public JessSingleResult(String message, int personId) {
         this.personId = personId;
         this.message = message;
     }

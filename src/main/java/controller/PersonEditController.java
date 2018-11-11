@@ -13,6 +13,8 @@ import model.Person;
 
 public class PersonEditController extends Child implements Initializable {
 
+    public static final String PATH = "view/PersonEdit.fxml";
+
     @FXML
     private TextField nameField;
 

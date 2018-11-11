@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -15,8 +16,11 @@ import jess.JessException;
 import model.Person;
 import repository.PersonRepository;
 
+import static utils.ResultDTOBuilder.convertResultToDTO;
+
 public class PersonListController extends Child implements Initializable {
 
+    public static final String PATH = "view/PersonList.fxml";
     @FXML
     private ListView<Person> personListView;
 
@@ -64,7 +68,7 @@ public class PersonListController extends Child implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Person> persons = PersonRepository.getInstance().getPersons();
 
-        for (int i = 0; i< 10; i++) {
+        for (int i = 0; i < 10; i++) {
             Person p = new Person();
             p.setName("test");
             persons.add(p);
@@ -90,8 +94,9 @@ public class PersonListController extends Child implements Initializable {
     }
 
     @FXML
-    private void process() throws JessException {
-        JessEngine engine = new JessEngine();
-        engine.checkPersons();
+    private void process() throws JessException, IOException {
+        JessEngine engine = JessEngine.getInstance();
+        var resultList = engine.checkPersons();
+        this.root.showResult(convertResultToDTO(resultList));
     }
 }

@@ -8,6 +8,9 @@ import model.Person;
 
 public class FakeDataUtils {
 
+    private FakeDataUtils() {
+    }
+
     public static ObservableList<Person> getPersons() {
         var list = new ArrayList<Person>() {{
             add(new Person("Olivier Francis Renaud ", "Синий", "Рыжий", "Француз"));

@@ -1,29 +1,28 @@
-;; import
+;; importing classes
 (import model.Person)
-(import model.JessResult)
-;;
+(import model.JessSingleResult)
+(import model.JessCoupleResult)
+;; defining deftemplates
 (deftemplate Person (declare (from-class Person)))
-(deftemplate JessResult (declare (from-class JessResult)))
+(deftemplate JessSingleResult (declare (from-class JessSingleResult)))
+(deftemplate JessCoupleResult (declare (from-class JessCoupleResult)))
 
 
-
-
-(defrule check_persons1
-    ?person1 <- (Person {name == "Павел"})
+(defrule check
+    ?person1 <- (Person { hairColor == "каштановый" && nationality == "француз" && (eyeColor == "зелёный" || eyeColor == "синий")})
     =>
-    (add (new JessResult ?person1.id "Правило 1"))
+    (add (new JessSingleResult "Правило 1" ?person1.id))
 )
 
 (defrule check_persons2
-    ?person1 <- (Person {name == "Иван"})
+    ?person1 <- (Person {hairColor != "тёмный" && eyeColor != "синий" && hairColor != eyeColor})
     =>
-    (add (new JessResult ?person1.id "Правило 2"))
+    (add (new JessSingleResult "Правило 2" ?person1.id))
 )
 
 (defrule check_persons3
-    ?person1 <- (Person {name == "test1"})
-    ?person2 <- (Person {name == "test2"})
+    ?person1 <- (Person {(eyeColor == "карий" || eyeColor == "синий") && nationality == "немец" && hairColor != "светлый"})
+    ?person2 <- (Person {(eyeColor == "зелёный" || (eyeColor == "карий" && hairColor == "каштановый") ) && hairColor == person1.hairColor})
     =>
-    (add (new JessResult ?person1.id "правило 3"))
-    (add (new JessResult ?person2.id "правило 3"))
+    (add (new JessCoupleResult "правило 3" ?person1.id ?person2.id))
 )

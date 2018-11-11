@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import controller.PersonEditController;
 import controller.PersonListController;
+import controller.ResultListController;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Person;
+import model.ResultDTO;
 
 public class Root extends Application {
 
@@ -42,7 +44,7 @@ public class Root extends Application {
         primaryStage.show();
         this.primaryStage = primaryStage;
         showPersons();
-        primaryStage.setOnCloseRequest(event ->  {
+        primaryStage.setOnCloseRequest(event -> {
             Platform.exit();
             System.exit(0);
         });
@@ -50,7 +52,7 @@ public class Root extends Application {
 
     private void showPersons() throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Root.class.getClassLoader().getResource(convertPath("view\\PersonList.fxml")));
+        loader.setLocation(Root.class.getClassLoader().getResource(convertPath(PersonListController.PATH)));
         AnchorPane personOverview = loader.load();
         rootLayout.setCenter(personOverview);
 
@@ -63,9 +65,8 @@ public class Root extends Application {
     }
 
     public static String convertPath(String path) {
-        if (OS.equals("Linux"))
-        {
-             return path.replace('\\', '/');
+        if (OS.equals("Linux")) {
+            return path.replace('\\', '/');
         } else {
             return path.replace('/', '\\');
         }
@@ -80,7 +81,7 @@ public class Root extends Application {
             // Загружаем fxml-файл и создаём новую сцену
             // для всплывающего диалогового окна.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Root.class.getClassLoader().getResource(convertPath("view/PersonEdit.fxml")));
+            loader.setLocation(Root.class.getClassLoader().getResource(convertPath(PersonEditController.PATH)));
             AnchorPane page = (AnchorPane) loader.load();
 
             // Создаём диалоговое окно Stage.
@@ -100,6 +101,31 @@ public class Root extends Application {
             dialogStage.showAndWait();
 
             return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean showResult(ResultDTO results) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Root.class.getClassLoader().getResource(convertPath(ResultListController.PATH)));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Результаты");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            ResultListController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.buildPanels(results);
+            dialogStage.showAndWait();
+
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
