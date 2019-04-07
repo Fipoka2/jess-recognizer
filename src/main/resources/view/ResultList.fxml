@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="mainPane" prefHeight="290.0" prefWidth="477.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ResultListController">
+    <children>
+      <ScrollPane hbarPolicy="NEVER" prefHeight="290.0" prefWidth="477.0">
+         <content>
+            <Accordion prefHeight="288.0" prefWidth="475.0" fx:id="accordion" />
+         </content>
+      </ScrollPane>
+    </children>
+</AnchorPane>

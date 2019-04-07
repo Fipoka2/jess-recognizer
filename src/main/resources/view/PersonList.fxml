@@ -5,56 +5,132 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PersonListController">
-<children>
-    <SplitPane dividerPositions="0.3" layoutX="153.0" layoutY="70.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                <children>
-                  <ListView fx:id="personListView" layoutX="10.0" layoutY="7.0" prefHeight="250.0" prefWidth="157.0" />
-                </children>
-            </AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                <children>
-                    <Label layoutX="104.0" layoutY="51.0" text="Person Details" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-                    <GridPane layoutX="43.0" layoutY="104.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
-                        <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        </columnConstraints>
-                        <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints />
-                        </rowConstraints>
-                        <children>
-                            <Label text="Имя" GridPane.rowIndex="1" />
-                            <Label text="Цвет глаз" GridPane.rowIndex="2" />
-                            <Label text="Цвет волос" GridPane.rowIndex="3" />
-                            <Label text="Национальность" GridPane.rowIndex="4" />
-                            <Label fx:id="nameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                            <Label fx:id="eyeColorLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                            <Label fx:id="hairColorLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                            <Label fx:id="nationality" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        </children>
-                    </GridPane>
-                    <ButtonBar layoutX="54.0" layoutY="250.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                        <buttons>
-                            <Button mnemonicParsing="false" onAction="#handleNewPerson" text="New..." />
-                            <Button mnemonicParsing="false" onAction="#handleEditPerson" text="Edit..." />
-                            <Button mnemonicParsing="false" onAction="#handleDeletePerson" text="Delete" />
-                        </buttons>
-                    </ButtonBar>
-                </children>
-            </AnchorPane>
-        </items>
-    </SplitPane>
-</children>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="400.0"
+            prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/10.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.PersonListController">
+    <children>
+        <SplitPane dividerPositions="0.3" layoutX="153.0" layoutY="70.0"
+                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="800.0">
+                    <children>
+                        <ListView fx:id="personListView" layoutY="-2.0" prefHeight="400.0"
+                                  prefWidth="240.0" style="-fx-font-size: 14.0"/>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="389.0">
+                    <children>
+                        <Label alignment="CENTER" layoutX="67.0" layoutY="22.0" prefHeight="33.0"
+                               prefWidth="326.0" style="-fx-font-weight: bold"
+                               text="Информация о человеке" textAlignment="CENTER"
+                               AnchorPane.leftAnchor="67.0" AnchorPane.topAnchor="22.0">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                        </Label>
+                        <GridPane layoutX="38.0" layoutY="46.0" prefHeight="173.0" prefWidth="394.0"
+                                  AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="124.0"
+                                  AnchorPane.topAnchor="46.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.0"
+                                                   minWidth="10.0" prefWidth="157.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="248.0"
+                                                   minWidth="10.0" prefWidth="217.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0"
+                                                vgrow="SOMETIMES"/>
+                                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0"
+                                                vgrow="SOMETIMES"/>
+                                <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="36.0"
+                                                vgrow="SOMETIMES"/>
+                                <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="32.0"
+                                                vgrow="SOMETIMES"/>
+                                <RowConstraints maxHeight="35.0" minHeight="25.0"
+                                                prefHeight="35.0"/>
+                            </rowConstraints>
+                            <children>
+                                <Label style="-fx-font-weight: bold" text="Имя"
+                                       GridPane.rowIndex="1">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                                <Label style="-fx-font-weight: bold" text="Цвет глаз"
+                                       GridPane.rowIndex="2">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                                <Label style="-fx-font-weight: bold" text="Цвет волос"
+                                       GridPane.rowIndex="3">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                                <Label style="-fx-font-weight: bold" text="Национальность"
+                                       GridPane.rowIndex="4">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="nameLabel" text="Label" GridPane.columnIndex="1"
+                                       GridPane.rowIndex="1">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="eyeColorLabel" text="Label" GridPane.columnIndex="1"
+                                       GridPane.rowIndex="2">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="hairColorLabel" text="Label" GridPane.columnIndex="1"
+                                       GridPane.rowIndex="3">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="nationality" text="Label" GridPane.columnIndex="1"
+                                       GridPane.rowIndex="4">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </GridPane>
+                        <ButtonBar layoutX="54.0" layoutY="250.0" AnchorPane.bottomAnchor="10.0"
+                                   AnchorPane.rightAnchor="10.0">
+                            <buttons>
+                                <Button mnemonicParsing="false" onAction="#handleNewPerson"
+                                        text="New..."/>
+                                <Button mnemonicParsing="false" onAction="#handleEditPerson"
+                                        text="Edit..."/>
+                                <Button mnemonicParsing="false" onAction="#handleDeletePerson"
+                                        text="Delete"/>
+                            </buttons>
+                        </ButtonBar>
+                        <Button fx:id="processButton" layoutX="460.0" layoutY="122.0"
+                                mnemonicParsing="false" onAction="#process" text="run"
+                                style="-fx-background-radius: 4em; -fx-min-height: 4em; -fx-max-height: 4em; -fx-min-width: 4em; -fx-max-width: 4em;">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
 </AnchorPane>

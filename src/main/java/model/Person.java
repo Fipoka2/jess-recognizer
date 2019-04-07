@@ -13,15 +13,15 @@ public class Person {
 
     public Person(String name) {
         this.id = this.hashCode();
-        this.name = name;
+        this.name = name.toLowerCase();
     }
 
     public Person(String name, String eyeColor, String hairColor, String nationality) {
         this.id = this.hashCode();
-        this.name = name;
-        this.eyeColor = eyeColor;
-        this.hairColor = hairColor;
-        this.nationality = nationality;
+        this.name = name.toLowerCase();
+        this.eyeColor = eyeColor.toLowerCase();
+        this.hairColor = hairColor.toLowerCase();
+        this.nationality = nationality.toLowerCase();
     }
 
     public String getName() {
@@ -29,7 +29,7 @@ public class Person {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.toLowerCase();
     }
 
     public String getEyeColor() {
@@ -37,7 +37,7 @@ public class Person {
     }
 
     public void setEyeColor(String eyeColor) {
-        this.eyeColor = eyeColor;
+        this.eyeColor = eyeColor.toLowerCase();
     }
 
     public String getHairColor() {
@@ -45,7 +45,7 @@ public class Person {
     }
 
     public void setHairColor(String hairColor) {
-        this.hairColor = hairColor;
+        this.hairColor = hairColor.toLowerCase();
     }
 
     public String getNationality() {
@@ -53,7 +53,7 @@ public class Person {
     }
 
     public void setNationality(String nationality) {
-        this.nationality = nationality;
+        this.nationality = nationality.toLowerCase();
     }
 
     public Integer getId() {
